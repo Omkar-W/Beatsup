@@ -1,0 +1,39 @@
+insert expenditure dtails into table expenses=== 
+
+DELIMITER //
+Create PROCEDURE insertexp(in e_id int,in e_ec int,in e_af int,in e_fc int )
+     BEGIN
+    insert into expenses(event_id,eqp_cost,artist_fees,food_cost) values (e_id,e_ec,e_af,e_fc);
+    END //
+DELIMETER ;
+
+==============================================================
+calculate and store total expendicure
+delimiter //
+    create procedure totale(in eventid int)
+    begin
+    update expenses
+    set total_exp =eqp_cost+artist_fees+stadium_cost+food_cost
+    where eventid=event_loc_id;
+    end //
+===============================================================
+    delimiter //
+create procedure ticket_rev(in vid int)
+begin
+ select (e.vvip_booked*t.vvip) as vvipTic
+    from events e,ticket_price t
+    where e.event_venue_id=t.venue_id=vid;
+end // 
+
+=================================================================
+delimter //
+create procedure ticket_rev2(in vid int)
+begin
+ select (e.vip_booked*t.vip) as vipTic
+    from events e,ticket_price t
+    where e.event_venue_id=t.venue_id and t.venue_id==vid;
+end // 
+
+
+
+

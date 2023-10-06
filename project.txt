@@ -1,0 +1,367 @@
+1) TABLE:- GENRE
+-----------------
+insert into tbl_genre
+values(10,'Singer');
+insert into tbl_genre
+values(20,'Comedian');
+insert into tbl_genre
+values(30,'Band');
+================================
+2) TABLE:- VENUE   
+-----------------
+insert into venue
+values(3001,'Wankhede Stadium','Maharashtra','Mumbai',39000); 
+insert into venue
+values(3002,'Narendra Modi Stadium','Gujarat,'Ahmedabad',132000);
+
+insert into venue
+values(3003,'Edens Garden','West Bengal','Kolkata',69000);
+
+insert into venue
+values(3004,'Jawaharlal Nehru Stadium','Delhi','New Delhi',41000);
+
+insert into venue
+values(3005,'Vintage Comedy Club','Maharastra','Pune',1200);
+
+insert into venue
+values(3006,'Chemistry Roof Top','Telangana','Hyderabad',800);
+
+insert into venue
+values(3007,'The Drowning Street','Uttar Pradesh','Lucknow',900);
+
+insert into venue
+values(3008,'Hotel Prime Safari','Rajasthan','Jaipur',1400);
+
+insert into venue
+values(3009,'GYLT club Gigs','Karnataka','Bangalore',12000);
+
+insert into venue
+values(3010,'Taj Lakefront','Madhya Pradesh','Bhopal',8000);
+========================================================================
+
+===============================================
+4) TABLE : ticket_price
+--------------------------
+insert into ticket_price
+values(3001,10000,8000,5000,3000);
+insert into ticket_price
+values(3002,10000,7000,4000,1800);
+insert into ticket_price
+values(3003,9000,6000,4000,2000);
+insert into ticket_price
+values(3004,10000,7500,5000,2500);
+insert into ticket_price
+values(3005,800,500,300,null);
+insert into ticket_price
+values(3006,700,500,350,null);
+insert into ticket_price
+values(3007,null,700,400,150);
+insert into ticket_price
+values(3008,null,600,400,150);
+insert into ticket_price
+values(3009,4000,2500,1000,500);
+insert into ticket_price
+values(3010,null,3500,2000,800);
+
+=================================================================
+
+=================================================================
+5) TABLE : events
+---------------------
+insert into events
+values(4001,'Stage Revolution','20230615',3009,988,2332,2712,4878,40);
+insert into events
+values(4002,'Velvet Concord','20230618',3010,796,1478,1987,2834,30);
+insert into events
+values(4003,'Rock On','20230624',3003,7541,8742,16478,28134,40);
+insert into events
+values(4004,'Arjit Singh Live','20230530',3004,7234,8456,9872,10154,10);
+insert into events
+values(4005,'Laugh with Zakir','20230602',3010,7566,1245,2248,2644,20);
+insert into events
+values(4006,'Musical record','20230621',3002,10235,18654,36021,48756,50);
+insert into events
+values(4007,'Rock and Roll','20230519',3004,8001,7564,9865,10254,10);
+insert into events
+values(4008,'AR Rehman Live','20230603',3002,11687,14536,36457,56879,50);
+
+=============================================================
+
+=============================================================
+6) TABLE:-TBL_AVAILABILITY
+---------------------------
+insert into tbl_availability
+values(101,'30052023','Booked');
+insert into tbl_availability
+values(,303,'','');
+insert into tbl_availability
+values(,,'','');
+insert into tbl_availability
+values(,,'','');
+insert into tbl_availability
+values(,,'','');
+insert into tbl_availability
+values(,,'','');
+insert into tbl_availability
+values(,,'','');
+insert into tbl_availability
+values(,,'','');
+=============================================================
+============================================================
+
+7) TABLE: TICKETS BOOKED
+insert into tbl_tickets_booked
+values(
+
+
+3) TABLE: STATE
+----------------
+create table tbl_state(
+state_id int not null primary key,
+state_name varchar(20));
+insert into tbl_state
+values(1,'Maharashtra');
+insert into tbl_state
+values(2,'Gujarat');
+insert into tbl_state
+values(3,'Karnataka');
+insert into tbl_state
+values(4,'Delhi');
+insert into tbl_state
+values(5,'Madhya Praadesh');
+insert into tbl_state
+values(6,'West Bengal');
+insert into tbl_state
+values(7,'Rajasthan');
+insert into tbl_state
+values(1,'Uttar Pradesh');
+insert into tbl_state
+values(1,'Telangana')
+==============================================
+
+==============================================
+
+8) TABLE : VENUE_SLOT
+---------------------
+create table venue_slot
+( venue_id int,
+  vvip int,
+  vip int, 
+  diamond int,
+  platinum int,
+  constraint slot_fk foreign key(venue_id) references venue(venue_id));
+
+insert into venue_slot
+values(3001,5000,9000,11000,14000);
+
+insert into venue_slot
+values(3002,12000,20000,40000,60000);
+
+insert into venue_slot
+values(3003,9000,10000,20000,30000);
+
+insert into venue_slot
+values(3004,9000,10000,10000,12000);
+
+insert into venue_slot
+values(3005,300,400,500,0);
+
+insert into venue_slot
+values(3006,100,300,400,0);
+
+insert into venue_slot
+values(3007,0,200,300,400);
+
+insert into venue_slot
+values(3008,0,300,500,600);
+
+insert into venue_slot
+values(3009,1000,2500,3500,5000);
+
+insert into venue_slot
+values(3010,1000,1500,2500,3000);
+
+===================================================
+===================================================
+
+9) TABLE : ORGANISER
+--------------------
+
+create table organiser
+     (
+     organiser_id int,
+     organiser_name varchar(30),
+     contact double,
+     constraint id_pk primary key(organiser_id));
+
+insert into organiser
+values(10,'Sumit',9998887776);
+insert into organiser
+values(20,'Mayur',9998887775);
+insert into organiser
+values(30,'Roshan',9998887774);
+insert into organiser
+values(40,'Manish',9998887773);
+insert into organiser
+values(50,'Bhushan',9998887772);
+
+================================================
+================================================
+TABLE: RATING
+create table rating
+( rating_id int not null unique primary key,
+event_id int,constraint event_idfk foreign key(event_id) references events(event_id),
+event_rating int,
+organiser_id int,constraint foreign key(organiser_id) references organiser(organiser_id),
+organiser_rating int);
+
+insert into rating
+values(11,4001,7,40,8);
+insert into rating
+values(12,4002,6,30,7);
+insert into rating
+values(13,4003,9,40,9);
+insert into rating
+values(14,4004,10,10,8);
+insert into rating
+values(15,4005,9,20,8);
+insert into rating
+values(16,4006,8,50,9);
+insert into rating
+values(17,4007,9,10,8);
+insert into rating
+values(18,4008,10,50,9);
+
+
+
+insert into events(artist_id)
+values(303);
+
+insert into events(artist_id)
+values(302);
+
+insert into events(artist_id)
+values(304);
+
+insert into events(artist_id)
+values(101);
+
+insert into events(artist_id)
+values(201);
+
+insert into events(artist_id)
+values(301);
+
+insert into events(artist_id)
+values(303);
+
+insert into events(artist_id)
+values(103);
+
+update events
+set artist_id= where event_id=
+
+create table expenses
+(
+event_id int,constraint event_fk foreign key(event_id) references events(event_id),
+org_id int,constraint org_id_fk foreign key(org_id) references organiser(organiser_id), 
+eqp_cost int,
+artist_fees int,
+eventLOC_fees int,
+Total_Exp int not null,
+Ticket_rev int not null,
+Profit int);
+
+delimiter //
+create procedure profit_gen(in eqp int,in artist int,in event int,out exp int)
+begin
+declare eqp int;
+declare artist int;
+declare event int;
+declare eventid int;
+declare exp decimal;
+select eqp_cost,artist_fees,eventLOC_fees,event_id,Totl_exp into eqp,artist,event,eventid,exp from events
+where eventid=event_id
+set exp=eqp_cost+artist_fees+eventLOC_fees;
+end //
+delimiter ;
+23:01:53	create procedure profit_gen(in eqp int,in artist int,in event int,out exp int) begin declare eqp int; declare artist int; declare event int; declare eventid int; declare exp decimal; select eqp_cost,artist_fees,eventLOC_fees,event_id into eqp,artist,event,eventid from events where eventid=event_id set exp=eqp_cost+artist_fees+eventLOC_fees; end	Error Code: 1046. No database selected Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.	0.000 sec
+
+
+
+23:02:48	create procedure profit_gen(in eqp int,in artist int,in event int,out exp int) begin declare eqp int; declare artist int; declare event int; declare eventid int; declare exp decimal; select eqp_cost,artist_fees,eventLOC_fees,event_id into eqp,artist,event,eventid from events where eventid=event_id set exp=eqp_cost+artist_fees+eventLOC_fees; end	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set exp=eqp_cost+artist_fees+eventLOC_fees; end' at line 10	0.016 sec
+
+
+23:10:34	create procedure profit_gen(in eqp int,in artist int,in event int,out exp int) begin declare eqp int	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3	0.015 sec
+
+
+
+
+
+create procdure total(int eventid1)
+begin
+
+select  totalcst=eqpcost+artistcost+eventcost
+from event
+where eventid=eventid1;
+
+end//
+
+
+create trigger abc after insert on events for each row begin insert into expenses (event_id) values (new.event_id)end ;
+
+create trigger abc after insert on events for each row begin insert into expenses (data) values (new.data)end ;
+
+01:36:47	create trigger event_insert insert insert on events for each row begin insert into expenses (event_id,org_id) values (event_id,organiser_id) end	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert insert on events for each row begin insert into expenses (event_id,org_id' at line 1	0.000 sec
+
+01:37:52	create trigger event_insert insert on expenses for each row begin insert into expenses (event_id,org_id) values (event_id,organiser_id) end	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert on expenses for each row begin insert into expenses (event_id,org_id) val' at line 1	0.000 sec
+
+01:39:47	create trigger event_insert insert on expenses for each row begin insert into expenses (event_id,org_id) select event_id,organiser_id from events end	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert on expenses for each row begin insert into expenses (event_id,org_id) sel' at line 1	0.000 sec
+
+
+
+
+
+
+
+event_id, event_name, event_date, event_venue_id, vvip_booked, vip_booked, diamond_booked, plat_booked, organiser_id, artist_id
+
+
+
+
+
+
+01:56:07	insert into expenses(event_id,organiser_id) select event_id,organiser_id from events create procedure tinsert() begin insert into expenses(event_id,organiser_id) select event_id,organiser_id from events end	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create procedure tinsert() begin insert into expenses(event_id,organiser_id) sel' at line 2	0.000 sec
+
+
+
+
+01:09:57	create procedure tinsert() begin insert into expenses(event_id,organiser_id) select event_id,organiser_id from events end;	Error Code: 1364. Field 'Total_Exp' doesn't have a default value	0.000 sec
+
+
+01:11:20	insert into expenses(event_id) select event_id from events	Error Code: 1364. Field 'Ticket_rev' doesn't have a default value	0.000 sec
+
+
+Table: expenses
+Columns:
+event_id int 
+org_id int 
+eqp_cost int 
+artist_fees int 
+eventLOC_fees int 
+Total_Exp int 
+Ticket_rev int 
+Profit int
+
+
+
+01:20:44	delete from expenses where event_id=101	Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.	0.000 sec
+
+
+
+
+
+
+
+
+
